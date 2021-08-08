@@ -1,19 +1,22 @@
 // ==============================================================================
 // Items
 // ==============================================================================
-export interface TextRes {
-  resId: string;
+export interface TextItem {
+  id: string;
+  pageId: string;
   key: string;
   text: string;
 }
 
 export interface PageItem {
-  pageID: string;
+  id: string;
+  url: string;
   title: string;
-  keywords: string;
+  author?: string;
+  keywords?: string;
   description: string;
-  screenshot: string;
-  texts: TextRes[];
+  screenshot?: string;
+  count: number;
 }
 
 // ==============================================================================
