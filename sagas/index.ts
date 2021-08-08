@@ -2,12 +2,13 @@ import { all, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import { fetchPages, fetchPagesSuccess, fetchPagesError } from '../slices/page';
 import { PageItem } from '../types';
+import { API_URL } from '../config';
 
 function* fetchPagesSaga(): any {
   let pages: PageItem[] = [];
 
   try {
-    pages = (yield axios('API_URL_TO_GET_PAGE')).data;
+    pages = (yield axios(`${API_URL}/pages`)).data;
 
     yield put(fetchPagesSuccess(pages));
   } catch (error) {
