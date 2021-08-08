@@ -5,15 +5,18 @@ import Logo from '../Logo';
 
 const AppNavbar = () => {
   return (
-    <AppBar elevation={0}>
-      <Toolbar>
-        <Link href='/'>
-          <a>
-            <Logo />
-          </a>
-        </Link>
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar elevation={0}>
+        <Toolbar>
+          <Link href='/'>
+            <a>
+              <Logo />
+            </a>
+          </Link>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </>
   );
 };
 
