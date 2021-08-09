@@ -14,7 +14,7 @@ export interface TextItem {
   id: string;
   pageId: string;
   key: string;
-  text: string;
+  value: string;
 }
 
 export interface PageItem {
@@ -35,6 +35,8 @@ export interface PageItem {
 export interface PageState {
   loading: boolean;
   pages: PageItem[];
+  page: PageItem | null;
+  texts: TextItem[];
   error?: string;
   term: string;
 }
