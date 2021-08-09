@@ -19,7 +19,7 @@ import {
 } from '../slices/page';
 import { PageItem, TextItem } from '../types';
 import { API_URL } from '../config';
-import { getSelectdPage } from '../selectors';
+import { getPageStates } from '../selectors';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 function* fetchPagesSaga(): any {
@@ -76,9 +76,9 @@ function* fetchTextsSaga({ payload }: PayloadAction<string>): any {
 function* addTextSaga({ payload }: PayloadAction<TextItem>): any {
   try {
     yield axios.post(`${API_URL}/texts`, payload);
-    const page = yield select(getSelectdPage);
+    const { page } = yield select(getPageStates);
     if (page) {
-      yield axios.put(`${API_URL}/pages/${page.id}`, { ...page, count: page.count + 1 });
+      yield axios.put(`${API_URL}/pages/${page.id}`, { ...page, count: page.count });
     }
   } catch (error) {}
 }
@@ -92,9 +92,9 @@ function* updateTextSaga({ payload }: PayloadAction<TextItem>): any {
 function* deleteTextSaga({ payload }: PayloadAction<TextItem>): any {
   try {
     yield axios.delete(`${API_URL}/texts/${payload.id}`);
-    const page = yield select(getSelectdPage);
+    const { page } = yield select(getPageStates);
     if (page) {
-      yield axios.put(`${API_URL}/pages/${page.id}`, { ...page, count: page.count - 1 });
+      yield axios.put(`${API_URL}/pages/${page.id}`, { ...page, count: page.count });
     }
   } catch (error) {}
 }

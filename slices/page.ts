@@ -74,9 +74,9 @@ const pageSlice = createSlice({
 
     addText: (state, { payload }: PayloadAction<TextItem>) => {
       state.texts.push(payload);
-      state.pages = state.pages.map((page) =>
-        page.id === payload.pageId ? { ...page, count: page.count + 1 } : page
-      );
+      if (state.page) {
+        state.page.count = state.page.count + 1;
+      }
     },
 
     updateText: (state, { payload }: PayloadAction<TextItem>) => {
@@ -87,9 +87,9 @@ const pageSlice = createSlice({
 
     deleteText: (state, { payload }: PayloadAction<TextItem>) => {
       state.texts = state.texts.filter((text) => text.id !== payload.id);
-      state.pages = state.pages.map((page) =>
-        page.id === payload.pageId ? { ...page, count: page.count - 1 } : page
-      );
+      if (state.page) {
+        state.page.count = state.page.count - 1;
+      }
     },
   },
 });
