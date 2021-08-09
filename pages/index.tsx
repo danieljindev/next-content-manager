@@ -12,8 +12,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPage, deletePage, fetchPages, updatePage } from '../slices/page';
-import { getPageStates } from '../selectors';
+import { addPage, changeTerm, deletePage, fetchPages, updatePage } from '../slices/page';
+import { getFilteredPages, getPageStates } from '../selectors';
 import Loading from '../components/Loading';
 import { makeExcerpt } from '../utils/helper';
 import { Column, PageItem } from '../types';
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
   },
   container: {
-    maxHeight: 440,
+    // maxHeight: 440,
   },
   tableCell: {
     '& img': {
@@ -81,8 +81,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
   },
   AddButton: {
-    textAlign: 'right',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
     marginBottom: '30px',
+    '& button': {
+      height: '40px',
+    },
+  },
+  searchBar: {
+    marginRight: '10px',
   },
   modal: {
     display: 'flex',
@@ -137,7 +145,8 @@ export default function PageTable() {
   // Selectors
   // ===========================================================================
 
-  const { loading, pages } = useSelector(getPageStates);
+  const { loading, pages, term } = useSelector(getPageStates);
+  const filtered = useSelector(getFilteredPages);
 
   // ===========================================================================
   // Dispatch
@@ -148,6 +157,7 @@ export default function PageTable() {
   const _addPage = (uuid: string) => dispatch(addPage({ ...selectedPage, id: uuid, url: uuid }));
   const _updatePage = () => dispatch(updatePage(selectedPage));
   const _deletePage = () => dispatch(deletePage(selectedPage));
+  const _changeTerm = (value: string) => dispatch(changeTerm(value));
 
   // ===========================================================================
   // Hooks
@@ -167,9 +177,11 @@ export default function PageTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  // ===========================================================================
-  // Handlers
-  // ===========================================================================
+
+  const handleTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    _changeTerm(event.target.value);
+  };
+
   const handleOpen = (status: ModalStatus, page: PageItem = { ...initialPageItem }) => {
     setModalTitle(status);
     if (page) {
@@ -208,9 +220,18 @@ export default function PageTable() {
     return <Loading loading />;
   }
 
+  console.log(filtered);
   return (
     <>
       <div className={classes.AddButton}>
+        <TextField
+          label={t('Search')}
+          className={classes.searchBar}
+          value={term}
+          size='small'
+          variant='outlined'
+          onChange={handleTermChange}
+        />
         <Button variant='contained' color='primary' onClick={() => handleOpen(ModalStatus.ADD)}>
           New Page
         </Button>
@@ -229,9 +250,9 @@ export default function PageTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {pages.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+              {filtered.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
-                  <TableRow hover role='checkbox' tabIndex={-1} key={row.title}>
+                  <TableRow hover role='checkbox' tabIndex={-1} key={row.id}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
@@ -271,7 +292,7 @@ export default function PageTable() {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component='div'
-          count={pages.length}
+          count={filtered.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

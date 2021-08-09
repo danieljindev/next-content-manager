@@ -91,6 +91,10 @@ const pageSlice = createSlice({
         state.page.count = state.page.count - 1;
       }
     },
+
+    changeTerm: (state, { payload }: PayloadAction<string>) => {
+      state.term = payload;
+    },
   },
 });
 
@@ -110,6 +114,7 @@ export const {
   addText,
   updateText,
   deleteText,
+  changeTerm,
 } = pageSlice.actions;
 
 export default pageSlice.reducer;
