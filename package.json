@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "server": "json-server --watch database/db.json --port 5000",
-    "lint": "next lint"
+    "eslint": "eslint ./**/*.{ts,tsx}",
+    "eslint:fix": "eslint --fix ./**/*.{ts,tsx}"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",

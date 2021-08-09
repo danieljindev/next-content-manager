@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h2 align="center">Next.js SPA Content Management System</h2>
 
-## Getting Started
+![Screenshot](./public/Screenshot.png)
 
-First, run the development server:
+## Live Website
+
+- <a href="https://ecstatic-lovelace-2beaf0.netlify.app/" target="_blank">Click Here</a>
+
+## Solution
+
+- [Click Here](./SOLUTION.md)
+
+## Features
+
+- **Create New Page** - Create page with title and description
+- **Update Page Details** - Update Page details
+- **Delete Page** - Delete Page from DB
+- **Create New Text** - Create text with key and value
+- **Update Text Details** - Update text details
+- **Delete Text** - Delete Text from DB
+- **Search by Page title** - Enables the user to search page by title.
+- **Loading Spinners** - Enables multiple loading spinners when browser load events from API
+
+## About
+
+This is a simple but enterprise-ready content management app created from [Next.js](https://nextjs.org/) by [Daniel](https://github.com/danieljindev/).
+
+> [Click Here](./assets/Screenshot.png) to see more in details.
+
+## Application Installation
+
+Clone and install.
 
 ```bash
-npm run dev
-# or
+git clone https://github.com/danieljindev/next-content-manager.git
+cd next-content-manager
+yarn install
+```
+
+Run a development server.
+
+```bash
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Application name**: Content Manger
+- **Homepage URL**: `http://localhost:3000`
+- **Deployed Server URL**: [Click Here](https://ecstatic-lovelace-2beaf0.netlify.app/)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+#### Development mode
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.tsx`.
+Go to `localhost:3000` to view the app.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+yarn start
+```
 
-## Learn More
+#### Production mode
 
-To learn more about Next.js, take a look at the following resources:
+In the production environment, the React app is built and saved to `build` folder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+yarn build && yarn start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Author
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Daniel Jin](https://github.com/danieljindev/)
