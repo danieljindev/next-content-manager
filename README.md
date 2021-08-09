@@ -2,10 +2,6 @@
 
 ![Screenshot](./public/Screenshot.png)
 
-## Live Website
-
-- <a href="https://ecstatic-lovelace-2beaf0.netlify.app/" target="_blank">Click Here</a>
-
 ## Solution
 
 - [Click Here](./SOLUTION.md)
@@ -37,15 +33,21 @@ cd next-content-manager
 yarn install
 ```
 
-Run a development server.
+Run a client.
 
 ```bash
 yarn dev
 ```
 
+Run a json server.
+
+```bash
+yarn server
+```
+
 - **Application name**: Content Manger
 - **Homepage URL**: `http://localhost:3000`
-- **Deployed Server URL**: [Click Here](https://ecstatic-lovelace-2beaf0.netlify.app/)
+- **Json Server URL**: `http://localhost:5000`
 
 #### Development mode
 
