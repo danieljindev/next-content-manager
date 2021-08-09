@@ -17,6 +17,17 @@
 - **Search by Page title** - Enables the user to search page by title.
 - **Loading Spinners** - Enables multiple loading spinners when browser load events from API
 
+## Todos
+
+- **Debounced Search** - Make better UX by debouncing search
+- **Virtualize Long Lists** - Efficiently rendering large lists and tabular data.
+- **Validation Input** - Integrate input validation
+- **Sort feature** - Sort by page title, description, created date, text count
+- **Memoization Tech** - React.memo, useMemo, useCallback, reselect
+- **Concurrent Mode**
+- **Inhance Page Table** - Add more features in table like sort, filter and so on.
+- **ScreenShot Feature**
+
 ## About
 
 This is a simple but enterprise-ready content management app created from [Next.js](https://nextjs.org/) by [Daniel](https://github.com/danieljindev/).
