@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { getPageStates, getSelectdPage } from '../../../selectors';
+import { getPageStates } from '../../../selectors';
 import { addText, deleteText, fetchPageTexts, setPage, updateText } from '../../../slices/page';
 import Loading from '../../../components/Loading';
 import Meta from '../../../components/Meta';
@@ -23,6 +23,7 @@ import { useState } from 'react';
 import { ModalStatus } from '../../../utils/enums';
 import { v4 as uuidv4 } from 'uuid';
 import { TextItem } from '../../../types';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -83,6 +84,7 @@ const initialTextItem: TextItem = {
 
 const Page = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const { query } = useRouter();
   const id = query.id as string;
 
@@ -167,17 +169,17 @@ const Page = () => {
       <Card className={classes.card}>
         <CardContent>
           <Typography variant='h1' align='center' className={classes.title}>
-            {page.title}
+            {t(page.title)}
           </Typography>
           <Typography variant='subtitle1' align='right' className={classes.author}>
-            Author : {page.author}
+            {t('Author')} : {page.author}
           </Typography>
           <Typography variant='subtitle1' align='left' className={classes.description}>
-            {page.description}
+            {t(page.description)}
           </Typography>
           <div className={classes.AddButton}>
             <Button variant='contained' color='primary' onClick={() => handleOpen(ModalStatus.ADD)}>
-              New Text
+              {t('New Text')}
             </Button>
           </div>
           {texts &&
@@ -188,7 +190,7 @@ const Page = () => {
                     {text.key}
                   </Typography>
                   <Typography variant='subtitle1' align='left' className={classes.author}>
-                    {text.value}
+                    {t(text.value)}
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing className={classes.cardActions}>
@@ -231,13 +233,13 @@ const Page = () => {
             </>
           ) : (
             <Typography variant='subtitle1' align='left' className={classes.author}>
-              Do you really want to delete this text?
+              {t('Do you really want to delete this text?')}
             </Typography>
           )}
 
           <div className={classes.modalConfirm}>
             <Button variant='contained' color='primary' onClick={handleSave}>
-              Confirm
+              {t('Confirm')}
             </Button>
           </div>
         </Card>

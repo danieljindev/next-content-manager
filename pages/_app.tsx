@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import store from '../store';
+import '../plugins/i18n';
 import MainLayout from '../components/layouts/MainLayout';
 
 function MyApp({ Component, pageProps }: AppProps) {

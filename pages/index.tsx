@@ -21,6 +21,7 @@ import { Button, Card, IconButton, Modal, TextField, Typography } from '@materia
 import { useState } from 'react';
 import { ModalStatus } from '../utils/enums';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 const columns: Column[] = [
   {
@@ -123,7 +124,7 @@ const initialPageItem: PageItem = {
 
 export default function PageTable() {
   const classes = useStyles();
-
+  const { t } = useTranslation();
   // ===========================================================================
   // State
   // ===========================================================================
@@ -221,10 +222,10 @@ export default function PageTable() {
               <TableRow>
                 {columns.map((column) => (
                   <TableCell key={column.id} align='center' style={{ minWidth: column.minWidth }}>
-                    {column.label}
+                    {t(column.label)}
                   </TableCell>
                 ))}
-                <TableCell align='center'>Action</TableCell>
+                <TableCell align='center'>{t('Action')}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -240,7 +241,7 @@ export default function PageTable() {
                           className={classes.tableCell}
                         >
                           {column.format && typeof value === 'string'
-                            ? column.format(value)
+                            ? column.format(t(value))
                             : value}
                         </TableCell>
                       );
@@ -283,13 +284,13 @@ export default function PageTable() {
           {modalTitle != ModalStatus.DELETE ? (
             <>
               <TextField
-                label='Page Title'
+                label={t('Page Title')}
                 className={classes.textKey}
                 value={selectedPage.title}
                 onChange={(e) => setSelectedPage({ ...selectedPage, title: e.target.value })}
               />
               <TextField
-                label='Page Description'
+                label={t('Page Description')}
                 className={classes.textValue}
                 multiline
                 rows={4}
@@ -299,7 +300,7 @@ export default function PageTable() {
             </>
           ) : (
             <Typography variant='subtitle1' align='left'>
-              Do you really want to delete this page?
+              {t('Do you really want to delete this page?')}
             </Typography>
           )}
 
