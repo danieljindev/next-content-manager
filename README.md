@@ -15,11 +15,12 @@
 - **Update Text Details** - Update text details
 - **Delete Text** - Delete Text from DB
 - **Search by Page title** - Enables the user to search page by title.
-- **Loading Spinners** - Enables multiple loading spinners when browser load events from API
+- **Loading Spinners** - Enables multiple loading spinners when browser load data from API
 
 ## Todos
 
 - **Debounced Search** - Make better UX by debouncing search
+- **Theme Color Feature** - Make various theme like dark, light
 - **Virtualize Long Lists** - Efficiently rendering large lists and tabular data.
 - **Validation Input** - Integrate input validation
 - **Sort feature** - Sort by page title, description, created date, text count
