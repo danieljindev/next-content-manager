@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "server": "json-server --watch database/db.json --port 5000",
+    "start-both": "concurrently \"yarn dev\" \"yarn server\"",
     "eslint": "eslint ./**/*.{ts,tsx}",
     "eslint:fix": "eslint --fix ./**/*.{ts,tsx}"
   },
@@ -15,6 +16,7 @@
     "@material-ui/icons": "^4.11.2",
     "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.21.1",
+    "concurrently": "^6.2.1",
     "i18next": "^20.3.5",
     "json-server": "^0.16.3",
     "next": "11.0.1",

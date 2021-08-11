@@ -57,6 +57,12 @@ Run a json server.
 yarn server
 ```
 
+Run both.
+
+```bash
+yarn start-both
+```
+
 - **Application name**: Content Manger
 - **Homepage URL**: `http://localhost:3000`
 - **Json Server URL**: `http://localhost:5000`
