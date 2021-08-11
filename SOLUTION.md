@@ -60,6 +60,7 @@ This project is possible thanks to all these open source languages, libraries, a
 | [Day.js](https://day.js.org/)                              | Fast 2kB alternative to Moment.js with the same modern API        |
 | [Prettier](https://prettier.io/)                           | An opinionated code formatter                                     |
 | [lint-staged](https://www.cypress.io/)                     | Run linters on git staged files                                   |
+| [Concurrently](https://www.npmjs.com/package/concurrently) | Run multiple commands concurrently                                |
 
 ## Styleguide
 
